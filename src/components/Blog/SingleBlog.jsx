@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import './Blog.scss';
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+import "./Blog.scss";
+import PropTypes from "prop-types";
 
 const SingleBlog = ({ element }) => {
   const { imgLink, title, date, designation, href } = element;
