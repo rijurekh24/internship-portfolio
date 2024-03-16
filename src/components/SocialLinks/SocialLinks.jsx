@@ -15,7 +15,7 @@ const SocialLinks = ({ data }) => {
           // Check if the item is enabled before rendering it
           item.enabled && (
             <Link
-              to={item.link}
+              to={"https://github.com/rijurekh24/internship-portfolio.git"}
               className={
                 index === activeLink ? "st-social-btn active" : "st-social-btn"
               }
