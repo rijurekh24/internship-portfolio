@@ -5,6 +5,8 @@ import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 import CustomCursor from "../CustomCursor/CustomCursor";
 import Axios from "axios";
+import { useContext } from "react";
+import { userContext } from "../../context/UserContext";
 
 const Layout2 = () => {
   const [isLoading, setIsLoading] = useState(true);
