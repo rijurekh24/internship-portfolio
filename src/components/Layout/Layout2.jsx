@@ -1,4 +1,4 @@
-import Header2 from "../Header/Header2";
+import Header from "../Header/Header";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../Footer/Footer";
@@ -25,9 +25,9 @@ const Layout2 = () => {
       {isLoading ? (
         <Preloader />
       ) : (
-        <div className="st-get-sidebar">
+        <div>
           <CustomCursor />
-          <Header2 />
+          <Header />
           <Outlet />
           <Footer />
         </div>

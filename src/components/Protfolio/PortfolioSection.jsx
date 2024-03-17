@@ -4,11 +4,13 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 import { useState } from "react";
 import SinglePortfolio from "./SinglePortfolio";
 import Modal from "../Modal/Modal";
+import useUserData from "../../hooks/useUserData";
 
 const PortfolioSection = ({ data }) => {
   // Modal
   const [modal, setModal] = useState(false);
   const [tempData, setTempData] = useState([]);
+  const userData = useUserData();
 
   const getData = (imgLink, title, subTitle) => {
     let tempData = [imgLink, title, subTitle];
@@ -24,20 +26,20 @@ const PortfolioSection = ({ data }) => {
   const { portfolioItems } = data;
   const itemsPerPage = 6;
   const [visibleItems, setVisibleItems] = useState(
-    portfolioItems.slice(0, itemsPerPage)
+    userData.projects.slice(0, itemsPerPage)
   );
 
   const [showLoadMore, setShowLoadMore] = useState(true);
 
   const loadMoreItems = () => {
     const currentLength = visibleItems.length;
-    const nextChunk = portfolioItems.slice(
+    const nextChunk = userData.projects.slice(
       currentLength,
       currentLength + itemsPerPage
     );
     setVisibleItems((prevItems) => [...prevItems, ...nextChunk]);
 
-    if (currentLength + itemsPerPage >= portfolioItems.length) {
+    if (currentLength + itemsPerPage >= userData.projects.length) {
       setShowLoadMore(false);
     }
   };
@@ -49,9 +51,11 @@ const PortfolioSection = ({ data }) => {
         <SectionHeading title={"Portfolio"} />
         <div className="container">
           <div className="row">
-            {visibleItems.map((element, index) => (
-              <SinglePortfolio data={element} key={index} getData={getData} />
-            ))}
+            {visibleItems.map((element, index) =>
+              element.enabled ? (
+                <SinglePortfolio data={element} key={index} getData={getData} />
+              ) : null
+            )}
             <div className="col-lg-12 text-center">
               <div className="st-portfolio-btn">
                 {showLoadMore && (

@@ -8,7 +8,6 @@ import ReviewSection from "../components/Review/ReviewSection";
 import Contact from "../components/Contact/Contact";
 import PortfolioSection from "../components/Protfolio/PortfolioSection";
 import Hero from "../components/Hero/Hero";
-import useUserData from "../hooks/useUserData";
 
 const Home = () => {
   const {
@@ -23,9 +22,6 @@ const Home = () => {
     serviceData,
     socialData,
   } = data;
-
-  const userData = useUserData();
-  const servicesData = userData.services;
 
   return (
     <>
