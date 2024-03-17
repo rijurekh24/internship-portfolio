@@ -4,12 +4,15 @@ import parser from "html-react-parser";
 import SocialLinks from "../SocialLinks/SocialLinks";
 import { Link as ScrollLink } from "react-scroll";
 import { useEffect } from "react";
-import WaterWave from "react-water-wave";
+import useUserData from "../../hooks/useUserData";
 
-const Hero = ({ data, socialData, info }) => {
+const Hero = ({ data }) => {
+  const userData = useUserData();
+
   const { bgImgLink, subTitle } = data;
 
-  const { name, title, avatar } = info;
+  const { name, title, avatar } = userData.about;
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollValue = window.scrollY;
@@ -69,7 +72,7 @@ const Hero = ({ data, socialData, info }) => {
           data-aos-delay="1000"
           data-aos-duration="1000"
         >
-          <SocialLinks data={socialData} />
+          <SocialLinks data={userData.social_handles} />
         </div>
       </div>
     </section>

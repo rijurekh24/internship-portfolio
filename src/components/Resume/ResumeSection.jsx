@@ -2,9 +2,13 @@ import PropTypes from "prop-types";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import "./Resume.scss";
 import SingleResume from "./SingleResume";
+import useUserData from "../../hooks/useUserData";
 
 const ResumeSection = ({ data, timeline }) => {
   const { educationTitle, experienceTitle } = data;
+
+  const userData = useUserData();
+
   return (
     <section id="resume" className="st-dark-bg">
       <div className="st-height-b100 st-height-lg-b80"></div>
@@ -26,7 +30,7 @@ const ResumeSection = ({ data, timeline }) => {
               <div className="st-height-b50 st-height-lg-b30"></div>
 
               <div className="st-resume-timeline-wrap">
-                {timeline.map((timelineItem, index) =>
+                {userData.timeline.map((timelineItem, index) =>
                   timelineItem.enabled ? (
                     timelineItem.forEducation ? (
                       <SingleResume element={timelineItem} key={index} />
@@ -47,7 +51,7 @@ const ResumeSection = ({ data, timeline }) => {
               <div className="st-height-b50 st-height-lg-b30"></div>
 
               <div className="st-resume-timeline-wrap">
-                {timeline.map((timelineItem, index) =>
+                {userData.timeline.map((timelineItem, index) =>
                   timelineItem.enabled ? (
                     !timelineItem.forEducation ? (
                       <SingleResume element={timelineItem} key={index} />

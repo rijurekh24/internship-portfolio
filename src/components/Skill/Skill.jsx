@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 import "./Skill.scss";
 import SectionHeading from "../SectionHeading/SectionHeading";
+import useUserData from "../../hooks/useUserData";
 
-const Skill = ({ data, skills }) => {
+const Skill = ({ data }) => {
   const { title, text } = data;
+
+  const userData = useUserData();
 
   return (
     <section className="st-dark-bg">
@@ -26,7 +29,7 @@ const Skill = ({ data, skills }) => {
           <div className="col-lg-6">
             <div className="st-height-b0 st-height-lg-b30"></div>
             <div className="st-progressbar-wrap">
-              {skills.map((element, index) =>
+              {userData.skills.map((element, index) =>
                 element.enabled ? (
                   <div
                     className="st-single-progressbar"

@@ -5,9 +5,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SingleBlog from "../Blog/SingleBlog";
 import SingleReview from "../Review/SingleReview";
+import useUserData from "../../hooks/useUserData";
 
-const Carousel = ({ data, review }) => {
+const Carousel = ({ data }) => {
   const { useFor, informations, sliderSetting, sliderImages } = data;
+  const userData = useUserData();
+
   if (useFor === "blog") {
     return (
       <Slider {...sliderSetting}>
@@ -19,7 +22,7 @@ const Carousel = ({ data, review }) => {
   } else if (useFor === "review") {
     return (
       <Slider {...sliderSetting}>
-        {review.map((element, index) => (
+        {userData.testimonials.map((element, index) => (
           <SingleReview element={element} key={index} />
         ))}
       </Slider>

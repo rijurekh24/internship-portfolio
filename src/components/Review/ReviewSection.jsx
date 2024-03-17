@@ -3,7 +3,7 @@ import "./Review.scss";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import Carousel from "../Slider/Carousel";
 
-const Review = ({ data, review }) => {
+const Review = ({ data }) => {
   return (
     <section className="st-dark-bg">
       <div className="st-height-b100 st-height-lg-b80"></div>
@@ -14,7 +14,7 @@ const Review = ({ data, review }) => {
         data-aos-duration="800"
         data-aos-delay="500"
       >
-        <Carousel data={data} review={review} />
+        <Carousel data={data} />
       </div>
       <div className="st-height-b100 st-height-lg-b80"></div>
     </section>

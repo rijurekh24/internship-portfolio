@@ -9,8 +9,6 @@ import Contact from "../components/Contact/Contact";
 import PortfolioSection from "../components/Protfolio/PortfolioSection";
 import Hero from "../components/Hero/Hero";
 import useUserData from "../hooks/useUserData";
-import { useContext } from "react";
-import { userContext } from "../context/UserContext";
 
 const Home = () => {
   const {
@@ -22,40 +20,25 @@ const Home = () => {
     resumeData,
     reviewData,
     contactData,
+    serviceData,
     socialData,
   } = data;
 
-  const ctx = useContext(userContext);
-  const servicesData = ctx.userData.services;
+  const userData = useUserData();
+  const servicesData = userData.services;
 
   return (
     <>
       <div className="st-height-b80 st-height-lg-b80"></div>
-      <Hero
-        data={heroData.homeOneHero}
-        info={ctx.userData.about}
-        socialData={ctx.userData.social_handles}
-      />
+      <Hero data={heroData.homeOneHero} />
       <About data={aboutData} data-aos="fade-right" />
-      <Iconbox data={{ services: servicesData }} data-aos="fade-right" />
-      <Skill
-        data={skillData}
-        skills={ctx.userData.skills}
-        data-aos="fade-right"
-      />
-      <Resume data={resumeData} timeline={ctx.userData.timeline} />
+      <Iconbox data={serviceData} data-aos="fade-right" />
+      <Skill data={skillData} data-aos="fade-right" />
+      <Resume data={resumeData} />
       <PortfolioSection data={portfolioData} data-aos="fade-right" />
-      <ReviewSection
-        data={reviewData}
-        review={ctx.userData.testimonials}
-        data-aos="fade-right"
-      />
+      <ReviewSection data={reviewData} data-aos="fade-right" />
       <BlogSection data={blogData} data-aos="fade-right" />
-      <Contact
-        data={contactData}
-        socialData={ctx.userData.social_handles}
-        data-aos="fade-right"
-      />
+      <Contact data={contactData} data-aos="fade-right" />
     </>
   );
 };

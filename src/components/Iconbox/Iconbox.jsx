@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import "./Iconbox.scss";
+import useUserData from "../../hooks/useUserData";
 
 const Iconbox = ({ data }) => {
-  const { services } = data;
+  const userData = useUserData();
+
   return (
     <section>
       <div className="st-height-b100 st-height-lg-b80"></div>
       <SectionHeading title={"Service"} />
       <div className="container">
         <div className="row">
-          {services.map((element, index) =>
+          {userData.services.map((element, index) =>
             element.enabled ? (
               <div
                 className="col-lg-4 col-md-6"
